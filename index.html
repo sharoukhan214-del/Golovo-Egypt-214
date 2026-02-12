@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Golovo Egypt - جولوفو</title>
+    <style>
+        body { background-color: #121212; color: white; text-align: center; font-family: sans-serif; margin: 0; padding-top: 40px; }
+        .logo-shield { width: 120px; cursor: pointer; transition: 0.3s; }
+        .logo-shield:active { transform: scale(0.9); }
+        h1 { color: gold; font-size: 35px; margin: 10px 0 0; }
+        .btn-group { margin-top: 30px; display: flex; flex-direction: column; align-items: center; gap: 15px; }
+        button { border: 0; padding: 18px; width: 85%; max-width: 350px; border-radius: 30px; font-size: 18px; font-weight: bold; cursor: pointer; transition: 0.3s; }
+        .btn-client { background-color: #0044ff; color: white; }
+        .btn-worker { background-color: orange; color: black; }
+        .btn-outline { background: transparent; border: 2px solid; font-size: 15px; padding: 12px; }
+        .client-outline { border-color: #0044ff; color: #0044ff; }
+        .worker-outline { border-color: orange; color: orange; }
+    </style>
+</head>
+<body>
+
+    <img src="https://img.icons8.com/color/144/shield.png" class="logo-shield" onclick="checkGate()" alt="Logo">
+    <h1>Golovo Egypt</h1>
+    <p style="color: #aaa;">مع جولوفو.. الصنايعية بين إيديك</p>
+
+    <div class="btn-group">
+        <button class="btn-client" onclick="location.href='client_login.html'">تسجيل دخول العميل</button>
+        <button class="btn-worker" onclick="location.href='worker_login.html'">تسجيل دخول الصنايعي</button>
+        
+        <div style="margin-top: 20px; width: 100%;">
+            <button class="btn-outline client-outline" onclick="location.href='client_signup.html'">إنشاء حساب عميل</button>
+            <br><br>
+            <button class="btn-outline worker-outline" onclick="location.href='worker_signup.html'">إنشاء حساب صنايعي</button>
+        </div>
+    </div>
+
+    <script>
+        let clicks = 0;
+        function checkGate() {
+            clicks++;
+            if (clicks === 5) {
+                let userPhone = prompt("رقم الأدمن:");
+                let userPass = prompt("كلمة السر:");
+                if (userPhone === "01020744825" && userPass === "Mohamed142@") {
+                    alert("أهلاً يا زعيم.. جاري فتح لوحة التحكم");
+                    window.location.href = "admin_panel.html";
+                } else {
+                    alert("البيانات غلط!");
+                }
+                clicks = 0;
+            }
+        }
+    </script>
+</body>
+</html>
