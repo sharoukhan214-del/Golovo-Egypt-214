@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة التحكم - جولوفو</title>
+    <style>
+        body { background-color: #121212; color: white; font-family: sans-serif; margin: 0; padding-bottom: 80px; }
+        /* Header */
+        .top-bar { background: #1a1a1a; padding: 15px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #333; sticky; top: 0; }
+        /* Sidebar */
+        .sidebar { height: 100%; width: 0; position: fixed; z-index: 2000; top: 0; right: 0; background-color: #1a1a1a; overflow-x: hidden; transition: 0.4s; border-left: 1px solid #333; }
+        .sidebar a { padding: 15px 25px; text-decoration: none; font-size: 18px; color: white; display: block; transition: 0.3s; }
+        /* Cards */
+        .card { background: #1e1e1e; padding: 20px; border-radius: 20px; margin: 15px; border: 1px solid #333; }
+        .status-btn { padding: 12px 30px; border-radius: 50px; border: none; font-weight: bold; cursor: pointer; transition: 0.3s; }
+        .online { background: #28a745; color: white; }
+        .offline { background: #dc3545; color: white; }
+        /* Bottom Nav */
+        .bottom-nav { position: fixed; bottom: 0; width: 100%; background: #1a1a1a; display: flex; justify-content: space-around; padding: 10px 0; border-top: 1px solid #333; }
+    </style>
+</head>
+<body>
+
+    <div id="mySidebar" class="sidebar">
+        <a href="javascript:void(0)" onclick="closeNav()" style="font-size: 35px; color: orange;">×</a>
+        <div style="text-align: center; padding: 20px;">
+            <div style="font-size: 50px;">👤</div>
+            <p>إبراهيم خليل</p>
+        </div>
+        <hr border="0.1">
+        <a href="#">💰 المحفظة</a>
+        <a href="#">⭐ التقييمات</a>
+        <a href="index.html" style="color: #ff4444;">🚪 خروج</a>
+    </div>
+
+    <div class="top-bar">
+        <span style="font-size: 25px; cursor: pointer; color: orange;" onclick="openNav()">☰</span>
+        <span style="color: orange; font-weight: bold;">جولوفو - GOLOVO</span>
+        <div style="width: 35px; height: 35px; background: #333; border-radius: 50%; text-align: center; line-height: 35px; border: 1px solid orange;">👤</div>
+    </div>
+
+    <div style="text-align: center; margin-top: 20px;">
+        <button id="statusBtn" class="status-btn online" onclick="toggleStatus()">متوفر للعمل الآن</button>
+    </div>
+
+    <div class="card">
+        <div style="display: flex; justify-content: space-between;">
+            <span style="color: #28a745;">طلب جديد ⚡</span>
+            <span style="color: #888;">منذ ٥ دق</span>
+        </div>
+        <h3>تصليح سباكة - المعادي</h3>
+        <p style="color: #aaa; font-size: 14px;">محتاج فني يغير خلاط المطبخ والوصلات.</p>
+        <button style="width: 100%; background: #007aff; color: white; border: none; padding: 12px; border-radius: 10px; font-weight: bold;" onclick="openOffer()">تقديم عرض سعر</button>
+    </div>
+
+    <div id="offerSection" class="card" style="display: none;">
+        <h4 style="color: orange;">أرسل عرضك للعميل</h4>
+        <input type="number" id="priceInput" placeholder="أدخل المصنعية ج.م" oninput="calc()" style="width: 100%; padding: 10px; border-radius: 8px; border: none;">
+        <div style="margin-top: 10px; font-size: 13px;">
+            <p>عمولة التطبيق (20%): <span id="comm" style="color: red;">0</span> ج.م</p>
+            <p>صافي ربحك: <span id="net" style="color: #28a745; font-weight: bold;">0</span> ج.م</p>
+        </div>
+        <button onclick="alert('تم الإرسال!')" style="width: 100%; background: #28a745; border: none; padding: 10px; border-radius: 8px; color: white;">إرسال العرض</button>
+    </div>
+
+    <div class="bottom-nav">
+        <div style="color: orange;">🏠<br><small>الرئيسية</small></div>
+        <div style="color: #666;">📋<br><small>طلباتي</small></div>
+        <div style="color: #666;">⚙️<br><small>الإعدادات</small></div>
+    </div>
+
+    <script>
+        function openNav() { document.getElementById("mySidebar").style.width = "250px"; }
+        function closeNav() { document.getElementById("mySidebar").style.width = "0"; }
+        
+        function toggleStatus() {
+            let btn = document.getElementById('statusBtn');
+            if (btn.classList.contains('online')) {
+                btn.innerText = "أنا مشغول حالياً";
+                btn.className = "status-btn offline";
+            } else {
+                btn.innerText = "متوفر للعمل الآن";
+                btn.className = "status-btn online";
+            }
+        }
+
+        function openOffer() { document.getElementById('offerSection').style.display = 'block'; }
+
+        function calc() {
+            let p = document.getElementById('priceInput').value;
+            let c = p * 0.20;
+            document.getElementById('comm').innerText = c.toFixed(1);
+            document.getElementById('net').innerText = (p - c).toFixed(1);
+        }
+    </script>
+</body>
+</html>
