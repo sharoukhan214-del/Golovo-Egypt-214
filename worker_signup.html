@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>انضم كصنايعي - جولوفو</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body { background-color: #121212; color: white; font-family: 'Cairo', sans-serif; display: flex; flex-direction: column; align-items: center; padding: 20px; }
+        .form-container { width: 100%; max-width: 400px; margin-top: 20px; }
+        .input-field { width: 100%; background: white; border: none; padding: 15px; border-radius: 12px; margin-bottom: 12px; font-size: 16px; box-sizing: border-box; }
+        .btn-signup { width: 100%; background: orange; color: black; border: none; padding: 18px; border-radius: 50px; font-size: 18px; font-weight: bold; cursor: pointer; box-shadow: 0 4px 15px rgba(255,165,0,0.3); }
+    </style>
+</head>
+<body>
+    <div style="font-size: 50px;">⚙️</div>
+    <h2 style="color: orange; margin: 10px 0;">حساب صنايعي جديد</h2>
+    
+    <div class="form-container">
+        <input type="text" class="input-field" placeholder="الاسم بالكامل">
+        <select class="input-field">
+            <option value="" disabled selected>اختار تخصصك</option>
+            <optgroup label="صيانة">
+                <option>سباك</option>
+                <option>كهربائي</option>
+                <option>نقاش</option>
+            </optgroup>
+        </select>
+        <input type="tel" class="input-field" placeholder="رقم الموبايل">
+        <input type="password" class="input-field" placeholder="كلمة السر">
+        <button class="btn-signup" onclick="location.href='worker_dashboard.html'">إنشاء الحساب</button>
+    </div>
+</body>
+</html>
